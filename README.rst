@@ -2,7 +2,10 @@
 (FS) Media Gallery
 ==================
 
+Fork from https://bitbucket.org/franssaris/fs_media_gallery to support TYPO3 10 LTS
+
 A FAL based media gallery for TYPO3. Show your assets from your local or remote storage as a gallery of albums.
+
 
 Features
 ========

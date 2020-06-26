@@ -1,5 +1,5 @@
 {
-  "name": "minifranske/fs-media-gallery",
+  "name": "web-vision/fs-media-gallery",
   "description": "A FAL based media gallery for TYPO3. Show your assets from your local or remote storage as a gallery of albums.",
   "keywords": [
     "TYPO3",
@@ -20,7 +20,7 @@
     "GPL-2.0+"
   ],
   "require": {
-    "typo3/cms-core": "^8.3 || ^9.5"
+    "typo3/cms-core": "^9.5 || ^10.4"
   },
   "autoload": {
     "psr-4": {
