@@ -1,8 +1,10 @@
 <?php
 defined('TYPO3_MODE') || die();
 
-$boot = function ($packageKey) {
-
+$boot = function () {
+    
+    $packageKey = 'fs_media_gallery';
+    
     if (class_exists(\TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class)) {
         $conf = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
@@ -181,11 +183,11 @@ $boot = function ($packageKey) {
         );
     }
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['realurlAliasMediaAlbumsSlug']
-        = \MiniFranske\FsMediaGallery\Updates\RealurlAliasMediaAlbumsSlug::class; // Recommended before 'populateMedialAlbumsSlug'
+    // $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['realurlAliasMediaAlbumsSlug']
+    //     = \MiniFranske\FsMediaGallery\Updates\RealurlAliasMediaAlbumsSlug::class; // Recommended before 'populateMedialAlbumsSlug'
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['populateMedialAlbumsSlug']
-        = \MiniFranske\FsMediaGallery\Updates\PopulateMedialAlbumsSlug::class;
+    // $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['populateMedialAlbumsSlug']
+    //     = \MiniFranske\FsMediaGallery\Updates\PopulateMedialAlbumsSlug::class;
 };
 $boot($_EXTKEY);
 unset($boot);

@@ -28,12 +28,12 @@ use TYPO3\CMS\Fluid\Core\Parser\SyntaxTree\AbstractNode;
 /**
  * @api
  */
-abstract class AbstractWidgetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper implements \TYPO3\CMS\Fluid\Core\ViewHelper\Facets\ChildNodeAccessInterface
+abstract class AbstractWidgetViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper implements \TYPO3\CMS\Fluid\Core\ViewHelper\Facets\ChildNodeAccessInterface
 {
 
     /**
      * The Controller associated to this widget.
-     * This needs to be filled by the individual subclass by an @inject
+     * This needs to be filled by the individual subclass by an @TYPO3\CMS\Extbase\Annotation\Inject
      * annotation.
      *
      * @var \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController
@@ -61,7 +61,7 @@ abstract class AbstractWidgetViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper
 
     /**
      * @var \TYPO3\CMS\Extbase\Service\ExtensionService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $extensionService;
 

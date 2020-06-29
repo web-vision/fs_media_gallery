@@ -40,7 +40,7 @@ class MediaAlbum extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * fileCollectionRepository
      *
      * @var \TYPO3\CMS\Core\Resource\FileCollectionRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $fileCollectionRepository;
 
@@ -48,7 +48,7 @@ class MediaAlbum extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * mediaAlbumRepository
      *
      * @var \MiniFranske\FsMediaGallery\Domain\Repository\MediaAlbumRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $mediaAlbumRepository;
 
@@ -111,7 +111,7 @@ class MediaAlbum extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \MiniFranske\FsMediaGallery\Domain\Model\MediaAlbum|NULL
-     * @lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $parentalbum;
 
@@ -126,7 +126,7 @@ class MediaAlbum extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Child albums
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\MiniFranske\FsMediaGallery\Domain\Model\MediaAlbum>
-     * @lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $albumCache;
 

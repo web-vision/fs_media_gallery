@@ -18,7 +18,7 @@ namespace MiniFranske\FsMediaGallery\Updates;
 
 use MiniFranske\FsMediaGallery\Service\SlugService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Install\Updates\AbstractUpdate;
+use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
  * Migrate EXT:realurl unique alias into empty news slugs
@@ -30,7 +30,7 @@ use TYPO3\CMS\Install\Updates\AbstractUpdate;
  * Will only appear if missing slugs found between realurl and news, respecting language and expire date from realurl
  * Copies values from 'tx_realurl_uniqalias.value_alias' to 'tx_news_domain_model_news.path_segment'
  */
-class RealurlAliasMediaAlbumsSlug extends AbstractUpdate
+class RealurlAliasMediaAlbumsSlug implements UpgradeWizardInterface
 {
 
 
@@ -40,6 +40,20 @@ class RealurlAliasMediaAlbumsSlug extends AbstractUpdate
     public function __construct()
     {
         $this->slugService = GeneralUtility::makeInstance(SlugService::class);
+    }
+
+    public function executeUpdate(): bool
+    {
+        // user decided to migrate, migrate and mark wizard as done
+        $queries = $this->slugService->performRealurlAliasMigration();
+        if (!empty($queries)) {
+            foreach ($queries as $query) {
+                $databaseQueries[] = $query;
+            }
+            $this->markWizardAsDone();
+            return true;
+        }
+        return false;
     }
 
     /**

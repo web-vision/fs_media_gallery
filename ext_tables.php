@@ -3,6 +3,8 @@ defined('TYPO3_MODE') || die();
 
 $boot = function ($packageKey) {
 
+    $packageKey = 'fs_media_gallery';
+    
     if (TYPO3_MODE === 'BE') {
         // Add CSH
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
