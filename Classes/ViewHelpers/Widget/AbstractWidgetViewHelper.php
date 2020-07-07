@@ -21,14 +21,14 @@ namespace MiniFranske\FsMediaGallery\ViewHelpers\Widget;
 	 *                                                                        *
 	 * The TYPO3 project - inspiring people to share!                         *
 	 *                                                                        */
-use TYPO3\CMS\Fluid\Core\Compiler\TemplateCompiler;
-use TYPO3\CMS\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
-use TYPO3\CMS\Fluid\Core\Parser\SyntaxTree\AbstractNode;
+use TYPO3Fluid\Fluid\Core\Compiler\TemplateCompiler;
+use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
+use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\AbstractNode;
 
 /**
  * @api
  */
-abstract class AbstractWidgetViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper implements \TYPO3\CMS\Fluid\Core\ViewHelper\Facets\ChildNodeAccessInterface
+abstract class AbstractWidgetViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
     /**
@@ -139,7 +139,7 @@ abstract class AbstractWidgetViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelpe
      */
     public function setChildNodes(array $childNodes)
     {
-        $rootNode = $this->objectManager->get('TYPO3\\CMS\\Fluid\\Core\\Parser\\SyntaxTree\\RootNode');
+        $rootNode = $this->objectManager->get('TYPO3Fluid\\Fluid\\Core\\Parser\\SyntaxTree\\RootNode');
         foreach ($childNodes as $childNode) {
             $rootNode->addChildNode($childNode);
         }
@@ -238,7 +238,7 @@ abstract class AbstractWidgetViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelpe
      * @param ViewHelperNode $node
      * @param TemplateCompiler $compiler
      */
-    public function compile($argumentsName, $closureName, &$initializationPhpCode, AbstractNode $node, TemplateCompiler $compiler)
+    public function compile($argumentsName, $closureName, &$initializationPhpCode, ViewHelperNode $node, TemplateCompiler $compiler)
     {
         $compiler->disable();
         return '\'\'';

@@ -18,6 +18,7 @@ namespace MiniFranske\FsMediaGallery\Updates;
 
 use MiniFranske\FsMediaGallery\Service\SlugService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
@@ -40,7 +41,29 @@ class PopulateMedialAlbumsSlug implements UpgradeWizardInterface
     {
         $this->slugService = GeneralUtility::makeInstance(SlugService::class);
     }
+    
+    public function executeUpdate(): bool
+    {
+        $queries = $this->slugService->performUpdateSlugs();
+        if (!empty($queries)) {
+            return true;
+        }
+        return false;
+    }
 
+    public function updateNecessary(): bool
+    {
+        $elementCount = $this->slugService->countOfSlugUpdates();
+
+        return $elementCount > 0;
+    }
+
+    public function getPrerequisites(): array
+    {
+        return [
+            DatabaseUpdatedPrerequisite::class
+        ];
+    }
     /**
      * Get title
      *

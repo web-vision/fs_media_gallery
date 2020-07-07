@@ -18,6 +18,7 @@ namespace MiniFranske\FsMediaGallery\Updates;
 
 use MiniFranske\FsMediaGallery\Service\SlugService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
 use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 
 /**
@@ -47,13 +48,29 @@ class RealurlAliasMediaAlbumsSlug implements UpgradeWizardInterface
         // user decided to migrate, migrate and mark wizard as done
         $queries = $this->slugService->performRealurlAliasMigration();
         if (!empty($queries)) {
-            foreach ($queries as $query) {
-                $databaseQueries[] = $query;
-            }
-            $this->markWizardAsDone();
             return true;
         }
         return false;
+    }
+    
+    public function updateNecessary(): bool
+    {
+        $updateNeeded = false;
+        $elementCount = $this->slugService->countOfRealurlAliasMigrations();
+        if ($elementCount > 0) {
+            $updateNeeded = true;
+        }
+        return $updateNeeded;
+    }
+
+    /**
+     * @return string[] All new fields and tables must exist
+     */
+    public function getPrerequisites(): array
+    {
+        return [
+            DatabaseUpdatedPrerequisite::class
+        ];
     }
 
     /**

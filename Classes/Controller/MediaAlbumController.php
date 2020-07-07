@@ -325,7 +325,7 @@ class MediaAlbumController extends ActionController
      *
      * @param \MiniFranske\FsMediaGallery\Domain\Model\MediaAlbum $mediaAlbum
      * @param int $mediaAssetUid
-     * @ignorevalidation
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation
      */
     public function showAssetAction(MediaAlbum $mediaAlbum, $mediaAssetUid)
     {

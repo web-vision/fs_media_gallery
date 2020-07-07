@@ -131,7 +131,7 @@ class MediaAlbum extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $albumCache;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     protected $datetime;
 
