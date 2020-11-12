@@ -27,18 +27,23 @@ namespace MiniFranske\FsMediaGallery\Controller;
 
 use MiniFranske\FsMediaGallery\Domain\Model\MediaAlbum;
 use MiniFranske\FsMediaGallery\Utility\PageUtility;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 /**
  * MediaAlbumController
  */
 class MediaAlbumController extends ActionController
 {
+    /**
+     * @var string Name of the extension this controller belongs to
+     */
+    protected $extensionName = 'fs_media_gallery';
 
     /**
      * mediaAlbumRepository
