@@ -388,7 +388,11 @@ class MediaAlbumController extends ActionController
     protected function pageNotFound($message)
     {
         if (!empty($GLOBALS['TSFE'])) {
-            $GLOBALS['TSFE']->pageNotFoundAndExit($message);
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $GLOBALS['TYPO3_REQUEST'],
+                $message
+            );
+            throw new ImmediateResponseException($response, 1605182708235);
         } else {
             echo $message;
         }
