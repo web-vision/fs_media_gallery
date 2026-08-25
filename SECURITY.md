@@ -8,16 +8,16 @@ timely manner, and to coordinating responsibly with security researchers.
 
 ## Supported Versions
 
-This product has not had a tagged release yet; the table below describes the development state of the default branch.
-
 Security updates are provided for the following versions. Versions marked
 unsupported no longer receive security fixes; please upgrade before
 reporting an issue against them.
 
 | Version        | Supported           |
 | -------------- | ------------------- |
-| 1.x            | :x:                 |
-| < 1.0          | :x:                 |
+| 2.x            | :x:                 |
+| < 2.0          | :x:                 |
+
+This product has not had a tagged release yet; the line listed above describes the development state of the default branch.
 
 > **Note:** the newest version of this product targets a TYPO3 version that has left
 > regular LTS maintenance, so no version is currently covered by security updates.
